@@ -1,0 +1,247 @@
+{% stylesheet %}
+.ai-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards in a row */
+  gap: var(--grid-gap);
+  width: 100%;
+}
+
+.ai-card {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  position: relative;
+  background: var(--card-bg, #F2F2F2);
+  border: var(--outline-width) solid transparent;
+  border-radius: var(--card-radius);
+  opacity: var(--card-opacity);
+  transform: rotate(var(--card-angle));
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  flex-shrink: 0;
+}
+.ai-card:hover {
+  transform: translateY(-var(--hover-lift)) rotate(var(--card-angle));
+  border-color: var(--hover-outline);
+  box-shadow: 0 calc(var(--hover-lift) * 2) calc(var(--hover-lift) * 4) rgba(0,0,0,.12);
+}
+
+/* ====== ICON (TOP-LEFT) ====== */
+.ai-card-icon {
+  position: absolute;
+  top: var(--icon-padding);
+  left: var(--icon-padding);
+  z-index: 2;
+}
+.ai-card-icon img {
+  width: var(--icon-custom-size);
+  height: var(--icon-custom-size);
+  object-fit: contain; /* or cover if you want cropping */
+}
+.ai-card-icon svg {
+  display: block;
+  width: var(--icon-custom-size);
+  height: auto;
+}
+
+.ai-card-text-wrap {
+  position: absolute;
+  left: var(--text-padding);
+  right: var(--text-padding);
+  bottom: var(--text-padding);
+  z-index: 1;
+}
+.ai-card-text {
+  color: var(--text-color);
+  font-size: var(--text-size);
+  font-weight: var(--text-weight);
+  line-height: 1.25;
+  text-align: left;
+}
+
+.ai-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  text-decoration: none;
+}
+
+/* Tablet (2 columns) */
+@media (max-width: 1024px) {
+  .ai-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (1 column) */
+@media (max-width: 640px) {
+  .ai-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstylesheet %}
+
+<div class="section section--spacing section--{{ section.settings.section_width }}">
+  <div class="section__inner"
+       style="
+         --grid-gap: {{ section.settings.grid_gap }}px;
+         --card-radius: {{ section.settings.card_radius }}px;
+         --card-angle: {{ section.settings.card_angle }}deg;
+         --card-opacity: {{ section.settings.card_opacity | divided_by: 100.0 }};
+         --hover-lift: {{ section.settings.hover_lift }}px;
+         --outline-width: {{ section.settings.outline_width }}px;
+         --text-color: {{ section.settings.text_color }};
+         --text-size: {{ section.settings.text_size }}px;
+         --text-weight: {{ section.settings.text_weight }};
+         --text-padding: {{ section.settings.text_padding }}px;
+         --icon-custom-size: {{ section.settings.icon_custom_size }};
+         --icon-padding: {{ section.settings.icon_padding }}px;
+       ">
+
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.heading_size }} class="section__heading">
+        {{ section.settings.heading }}
+      </{{ section.settings.heading_size }}>
+    {% endif %}
+
+     <!-- Render any theme blocks dynamically -->
+      {% for block in section.blocks %}
+       {% render block %}
+      {% endfor %}
+
+    <div class="ai-card-grid section-content">
+      <!-- Render the 4 static cards from settings -->
+      {% for i in (1..4) %}
+        {% assign card_bg_key = 'card_bg_' | append: i %}
+        {% assign card_icon_key = 'card_icon_' | append: i %}
+        {% assign card_text_key = 'card_text_' | append: i %}
+        {% assign card_link_key = 'card_link_' | append: i %}
+        {% assign hover_outline_key = 'card_' | append: i | append: '_hover_outline_color' %}
+
+        <div class="ai-card"
+             style="--card-bg: {{ section.settings[card_bg_key] }};
+                    --hover-outline: {{ section.settings[hover_outline_key] | default: '#000'}};">
+          
+          {% assign icon = section.settings[card_icon_key] %}
+          {% if icon %}
+            <div class="ai-card-icon">
+              <img src="{{ icon | image_url: width: 400 }}" 
+                   alt="{{ icon.alt | default: 'icon' | escape }}" 
+                   loading="lazy">
+            </div>
+          {% else %}
+            <div class="ai-card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2l2.5 6.8L22 9l-6.2 2 .7 6.9L12 15l-4.5 2.9.7-6.9L2 9l7.5-.2z"/>
+              </svg>
+            </div>
+          {% endif %}
+
+          <div class="ai-card-text-wrap">
+            <div class="ai-card-text">{{ section.settings[card_text_key] }}</div>
+          </div>
+
+          {% if section.settings[card_link_key] != blank %}
+            <a class="ai-card-link" href="{{ section.settings[card_link_key] }}"></a>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+     
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Icon Cards Grid",
+  "tag": "section",
+  "settings": [
+     {
+      "type": "color",
+      "id": "card_1_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#DACAF8"
+    },
+      {
+      "type": "color",
+      "id": "card_2_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#BFE5E4"
+    },
+    {
+      "type": "color",
+      "id": "card_3_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#D5E6F6"
+    },
+       {
+      "type": "color",
+      "id": "card_4_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#F5ECE5"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "default": "page",
+      "options": [
+        { "value": "page", "label": "Page width" },
+        { "value": "full", "label": "Full width" }
+      ]
+    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Icon Cards" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ], "default": "h2"
+    },
+    { "type": "range", "id": "grid_gap", "min": 0, "max": 50, "step": 2, "unit": "px", "label": "Grid gap", "default": 20 },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Border radius", "default": 16 },
+    { "type": "range", "id": "card_angle", "min": -10, "max": 10, "step": 1, "unit": "deg", "label": "Angle", "default": 0 },
+    { "type": "range", "id": "card_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacity", "default": 100 },
+    { "type": "range", "id": "hover_lift", "min": 0, "max": 12, "step": 1, "unit": "px", "label": "Hover lift", "default": 4 },
+    { "type": "range", "id": "outline_width", "min": 0, "max": 8, "step": 1, "unit": "px", "label": "Outline width", "default": 2 },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "range", "id": "text_size", "min": 12, "max": 40, "step": 2, "unit": "px", "label": "Text size", "default": 22 },
+    { "type": "select", "id": "text_weight", "label": "Text weight", "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ], "default": "700"
+    },
+    { "type": "range", "id": "text_padding", "min": 10, "max": 60, "step": 2, "unit": "px", "label": "Text side/bottom padding", "default": 24 },
+    { "type": "text", "id": "icon_custom_size", "label": "Icon size (any CSS unit)", "default": "100px" },
+    { "type": "range", "id": "icon_padding", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Icon padding from edges", "default": 20 },
+
+    { "type": "header", "content": "Cards" },
+
+    { "type": "image_picker", "id": "card_icon_1", "label": "Card 1 Icon" },
+    { "type": "color", "id": "card_bg_1", "label": "Card 1 Background" },
+    { "type": "richtext", "id": "card_text_1", "label": "Card 1 Text" },
+    { "type": "url", "id": "card_link_1", "label": "Card 1 Link" },
+
+    { "type": "image_picker", "id": "card_icon_2", "label": "Card 2 Icon" },
+    { "type": "color", "id": "card_bg_2", "label": "Card 2 Background" },
+    { "type": "richtext", "id": "card_text_2", "label": "Card 2 Text" },
+    { "type": "url", "id": "card_link_2", "label": "Card 2 Link" },
+
+    { "type": "image_picker", "id": "card_icon_3", "label": "Card 3 Icon" },
+    { "type": "color", "id": "card_bg_3", "label": "Card 3 Background" },
+    { "type": "richtext", "id": "card_text_3", "label": "Card 3 Text" },
+    { "type": "url", "id": "card_link_3", "label": "Card 3 Link" },
+
+    { "type": "image_picker", "id": "card_icon_4", "label": "Card 4 Icon" },
+    { "type": "color", "id": "card_bg_4", "label": "Card 4 Background" },
+    { "type": "richtext", "id": "card_text_4", "label": "Card 4 Text" },
+    { "type": "url", "id": "card_link_4", "label": "Card 4 Link" }
+  ],
+  "blocks": [
+    { "type": "@theme" }
+  ],
+  "presets": [
+    { "name": "Icon Cards Grid", "category": "Cards" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,151 @@
+{% capture children %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+<section class="custom-email-signup-wrapper">
+  <div 
+    class="custom-email-signup-inner"
+    style="
+      background: {{ section.settings.bg_color }};
+      border-radius: {{ section.settings.border_radius }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+      display: flex;
+      flex-direction: column;
+      align-items: {{ section.settings.horizontal_alignment }};
+      justify-content: {{ section.settings.vertical_alignment }};
+      gap: {{ section.settings.gap }}px;
+    "
+  >
+    {% render 'section', section: section, children: children %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Email Signup",
+  "class": "section-wrapper",
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" },
+    { "type": "_divider" }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F5ECE5"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Container Border Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Middle" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap Between Elements",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Email Signup Section",
+      "category": "Forms"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+    .email-signup-block{
+    margin:0 auto;
+    }
+.custom-email-signup-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.custom-email-signup-inner {
+  width: 88.88%;
+  max-width: 88.88%;
+  margin: 0 auto;
+}
+.custom-email-signup-inner h2 {
+  font-family: "Quincy CF", serif !important;
+}
+</style>

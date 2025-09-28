@@ -1,0 +1,134 @@
+{% assign collection = closest.collection %}
+
+{% style %}
+  {% if request.visual_preview_mode %}
+    .collection-card { min-width: 250px; }
+  {% endif %}
+
+  /* Ensure the parent receives hover even if an overlay link sits on top */
+  .collection-card { position: relative; }
+
+  .collection-card__image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .collection-card__image--primary,
+  .collection-card__image--secondary {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Default: show primary, hide secondary */
+  .collection-card .collection-card__image--secondary { display: none; }
+
+  /* Hover on the CARD (not the wrapper) so it still works with overlay links */
+  .collection-card:hover .collection-card__image--primary { display: none; }
+  .collection-card:hover .collection-card__image--secondary { display: block; }
+{% endstyle %}
+
+{% capture card_image %}
+  <div class="collection-card__image-wrapper">
+    {% if collection.image %}
+      <img
+        src="{{ collection.image | img_url: '600x' }}"
+        alt="{{ collection.title | escape }}"
+        class="collection-card__image--primary"
+      >
+    {% endif %}
+
+    {%- comment -%}
+      Hover image from metafield:
+      Namespace: custom
+      Key: hover_image
+      Type: File (Image)
+      Create in Admin → Settings → Custom data → Collections
+    {%- endcomment -%}
+
+    {% if collection.metafields.custom.hover_image %}
+      <img
+        src="{{ collection.metafields.custom.hover_image | img_url: '600x' }}"
+        alt="{{ collection.title | escape }}"
+        class="collection-card__image--secondary"
+      >
+    {% endif %}
+  </div>
+{% endcapture %}
+
+{% capture children %}
+  {% content_for 'blocks', closest.collection: collection %}
+{% endcapture %}
+
+{% render 'collection-card',
+  card_image: card_image,
+  children: children,
+  block: block,
+  collection: collection,
+  section: section
+%}
+
+{% schema %}
+{
+  "name": "Collection card",
+  "blocks": [
+    { "type": "text" },
+    { "type": "spacer" },
+    { "type": "button" },
+    { "type": "group" },
+    { "type": "collection-title" }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Default image is the collection image. Hover image is set via metafield `custom.hover_image` (File → Image)."
+    },
+    {
+      "type": "select",
+      "id": "placement",
+      "label": "Placement",
+      "options": [
+        { "value": "on_image", "label": "On image" },
+        { "value": "below_image", "label": "Below image" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Position",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "center",
+      "visible_if": "{{ block.settings.placement == 'on_image' }}"
+    },
+    {
+      "type": "range",
+      "id": "collection_card_gap",
+      "label": "Vertical gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    }
+  ]
+}
+{% endschema %}

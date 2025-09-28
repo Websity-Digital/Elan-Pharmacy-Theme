@@ -1,0 +1,104 @@
+<section class="info-cards">
+  <div class="cards-grid">
+    {%- content_for 'blocks' -%}
+  </div>
+</section>
+
+<style>
+.info-cards {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.info-card {
+  border-radius: 16px;
+  padding: 30px;
+  color: #111;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.info-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--hover-color);
+}
+.card-icon {
+  display: block;
+  margin-bottom: 20px;
+}
+.info-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.info-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.info-group {
+  padding: 20px;
+  border-radius: 12px;
+  background: #e5e7eb;
+}
+.info-group h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.info-text {
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+</style>
+
+<script>
+document.querySelectorAll('.info-card').forEach(card => {
+  const borderColor = card.getAttribute('data-hover-border');
+  card.addEventListener('mouseenter', () => {
+    card.style.setProperty('--hover-color', borderColor);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--hover-color', 'transparent');
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Flexible Info Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Cards Section"
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" },
+    { "type": "text" },
+    { "type": "icon" },
+    { "type": "image" },
+    { "type": "button" },
+    { "type": "video" },
+    { "type": "group" },
+    { "type": "spacer" },
+    { "type": "_divider" }
+  ],
+  "presets": [
+    {
+      "name": "Flexible Info Cards",
+      "category": "Custom Sections"
+    }
+  ],
+  "max_blocks": 20
+}
+{% endschema %}

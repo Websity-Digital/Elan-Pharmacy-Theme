@@ -1,0 +1,188 @@
+{{ 'testimonial.css' | asset_url | stylesheet_tag }}
+
+
+
+<div class="testimonials-section section-{{ section.id }}">
+  <div class="page-width">
+    <h2 class="testimonials-title">{{ section.settings.heading | escape }}</h2>
+
+    <div class="testimonials-carousel-wrapper">
+      <div class="testimonials-carousel">
+        {% for block in section.blocks %}
+          <div class="testimonial-card" {{ block.shopify_attributes }}>
+            <!-- Updated structure to separate image and content areas -->
+            <div class="testimonial-image-container">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400, height: 200, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, class: 'testimonial-image' }}
+              {% else %}
+                <div class="testimonial-image-placeholder"></div>
+              {% endif %}
+            </div>
+            
+            <div class="testimonial-content-area">
+              <div class="testimonial-content">
+                {{ block.settings.text }}
+              </div>
+              
+              <div class="testimonial-metric">
+                <span class="metric-category">{{ block.settings.category | escape }}</span>
+                <span class="metric-value">{{ block.settings.metric | escape }}</span>
+                <span class="metric-unit">{{ block.settings.unit | escape }}</span>
+              </div>
+              
+              <div class="testimonial-author">
+                {{ block.settings.name | escape }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- ✅ New unified nav -->
+      <div class="carousel-nav">
+        <button class="carousel-button prev-button">&lt;</button>
+        <div class="carousel-dots">
+          {% for block in section.blocks %}
+            <button class="dot" data-slide="{{ forloop.index0 }}"></button>
+          {% endfor %}
+        </div>
+        <button class="carousel-button next-button">&gt;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector('.testimonials-section');
+  if (!section) return;
+
+  const carousel = section.querySelector('.testimonials-carousel');
+  const prevBtn = section.querySelector('.prev-button');
+  const nextBtn = section.querySelector('.next-button');
+  const dots = [...section.querySelectorAll('.dot')];
+  const cards = [...section.querySelectorAll('.testimonial-card')];
+
+  const GAP = 20;
+  let index = 0;
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 480) return 1;   // mobile
+    if (window.innerWidth <= 768) return 2;   // tablet
+    if (window.innerWidth <= 1200) return 3;  // small desktop
+    return 4;                                 // desktop
+  }
+
+  function cardWidth() {
+    return cards[0].offsetWidth + GAP;
+  }
+
+  function updateCarousel() {
+    const visible = getVisibleCount();
+    const total = cards.length;
+    const maxSlide = total - visible;
+
+    if (index > maxSlide) index = maxSlide;
+    if (index < 0) index = 0;
+
+    const x = index * cardWidth();
+    carousel.style.transform = `translateX(-${x}px)`;
+
+    updateDots(maxSlide);
+  }
+
+  function updateDots(maxSlide) {
+    dots.forEach(d => d.className = 'dot'); // reset all
+
+    // pill spans TWO dots for each index
+    if (index <= maxSlide) {
+      dots[index]?.classList.add('active', 'start');
+      dots[index + 1]?.classList.add('active', 'end');
+    }
+  }
+
+  nextBtn?.addEventListener('click', () => {
+    index++;
+    updateCarousel();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    index--;
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+
+  updateCarousel();
+});
+</script>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "tag": "section",
+    "class": "section-testimonials",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Journeys we're proud to support"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name",
+            "default": "Angelina Roy"
+          }, {
+            "type": "text",
+            "id": "category",
+            "label": "Category",
+            "default": "lost"
+          }, {
+            "type": "text",
+            "id": "metric",
+            "label": "Metric Value",
+            "default": "25"
+          }, {
+            "type": "text",
+            "id": "unit",
+            "label": "Metric Unit",
+            "default": "kg"
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Testimonial text",
+            "default": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Person image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "Text",
+        "blocks": [
+          { "type": "testimonial" },
+          { "type": "testimonial" },
+          { "type": "testimonial" },
+          { "type": "testimonial" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

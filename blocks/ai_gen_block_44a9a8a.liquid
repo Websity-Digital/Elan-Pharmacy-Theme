@@ -1,0 +1,236 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+
+
+
+
+
+{% style %}
+  /* ====== GRID WRAPPER ====== */
+ .ai-card-grid-{{ ai_gen_id }} {
+    display: grid;
+  gap: {{ block.settings.grid_gap }}px;
+  padding: {{ block.settings.section_padding }}px 0; /* ✅ vertical only */
+
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+
+}
+
+  /* ====== CARD BASE ====== */
+  .ai-card-{{ ai_gen_id }}{
+    width: 100%;
+    height:auto;
+     aspect-ratio: 4 / 5; 
+    position:relative;
+    width:{{ block.settings.card_width }}px;
+    height:{{ block.settings.card_height }}px;
+    flex-shrink:0;
+
+    background: var(--card-bg, {{ block.settings.card_background_color }});
+    border: {{ block.settings.outline_width }}px solid transparent;
+    border-radius: {{ block.settings.card_radius }}px;
+    opacity: {{ block.settings.card_opacity | divided_by: 100.0 }};
+    transform: rotate({{ block.settings.card_angle }}deg);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+.ai-card-{{ ai_gen_id }}:hover{
+  transform: translateY(-{{ block.settings.hover_lift }}px) rotate({{ block.settings.card_angle }}deg);
+  border-color: var(--hover-outline);
+  box-shadow: 0 {{ block.settings.hover_lift | times: 2 }}px {{ block.settings.hover_lift | times: 4 }}px rgba(0,0,0,.12);
+}
+
+
+  /* ====== ICON (TOP-LEFT) ====== */
+  .ai-card-icon-{{ ai_gen_id }}{
+    position:absolute;
+    top:{{ block.settings.icon_padding }}px;
+    left:{{ block.settings.icon_padding }}px;
+    z-index:2;
+  }
+  .ai-card-icon-{{ ai_gen_id }} img{
+    display:block;
+    width: {{ block.settings.icon_custom_size }};
+    height: auto;
+  }
+  .ai-card-icon-{{ ai_gen_id }} svg{
+    display:block;
+    width: {{ block.settings.icon_custom_size }};
+    height: auto;
+    fill:{{ block.settings.icon_color }};
+  }
+
+  /* ====== TEXT (BOTTOM-LEFT) ====== */
+  .ai-card-text-wrap-{{ ai_gen_id }}{
+    position:absolute;
+    left:{{ block.settings.text_padding }}px;
+    right:{{ block.settings.text_padding }}px;
+    bottom:{{ block.settings.text_padding }}px;
+    z-index:1;
+  }
+  .ai-card-text-{{ ai_gen_id }}{
+    color:{{ block.settings.text_color }};
+    font-size:{{ block.settings.text_size }}px;
+    font-weight:{{ block.settings.text_weight }};
+    line-height:1.25;
+    text-align:left;
+  }
+
+  .ai-card-link-{{ ai_gen_id }}{ position:absolute; inset:0; z-index:3; text-decoration:none; }
+
+
+
+  /* Tablet (2 columns) */
+@media (max-width: 1024px) {
+  .ai-card-grid-{{ ai_gen_id }} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile (1 column) */
+@media (max-width: 640px) {
+  .ai-card-grid-{{ ai_gen_id }} {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstyle %}
+
+<div class="ai-card-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% for i in (1..4) %}
+{% assign text_key       = 'card_' | append: i | append: '_text' %}
+  {% assign link_key       = 'card_' | append: i | append: '_link' %}
+  {% assign show_icon_key  = 'card_' | append: i | append: '_show_icon' %}
+  {% assign icon_image_key = 'card_' | append: i | append: '_icon_image' %}
+  {% assign bg_key         = 'card_' | append: i | append: '_bg_color' %}
+
+  {% assign card_text  = block.settings[text_key] %}
+  {% assign card_link  = block.settings[link_key] %}
+  {% assign show_icon  = block.settings[show_icon_key] %}
+  {% assign icon_image = block.settings[icon_image_key] %}
+  {% assign card_bg    = block.settings[bg_key] %}
+
+  {% assign hover_key   = 'card_' | append: i | append: '_hover_outline_color' %}
+  {% assign hover_color = block.settings[hover_key] | default: block.settings.outline_hover_color %}
+
+    <div class="ai-card-{{ ai_gen_id }}"
+       style="--card-bg: {{ card_bg | default: block.settings.card_background_color }};
+              --hover-outline: {{ hover_color }}">
+      {% if show_icon %}
+        <div class="ai-card-icon-{{ ai_gen_id }}">
+          {% if icon_image %}
+            <img src="{{ icon_image | image_url: width: 200 }}" alt="{{ icon_image.alt | default: 'icon' | escape }}" loading="lazy">
+          {% else %}
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l2.5 6.8L22 9l-6.2 2 .7 6.9L12 15l-4.5 2.9.7-6.9L2 9l7.5-.2z"/>
+            </svg>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="ai-card-text-wrap-{{ ai_gen_id }}">
+        <div class="ai-card-text-{{ ai_gen_id }}">{{ card_text }}</div>
+      </div>
+
+      {% if card_link != blank %}
+        <a class="ai-card-link-{{ ai_gen_id }}" href="{{ card_link }}" aria-label="Open card {{ i }}"></a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Icon Cards Grid",
+  "settings": [
+    {
+      "type": "color",
+      "id": "card_1_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#DACAF8"
+    },
+      {
+      "type": "color",
+      "id": "card_2_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#BFE5E4"
+    },
+    {
+      "type": "color",
+      "id": "card_3_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#D5E6F6"
+    },
+       {
+      "type": "color",
+      "id": "card_4_hover_outline_color",
+      "label": "card 1 outline hover",
+      "default": "#F5ECE5"
+    },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "grid_gap", "min": 0, "max": 50, "step": 2, "unit": "px", "label": "Grid gap", "default": 20 },
+    { "type": "range", "id": "section_padding", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Section padding", "default": 20 },
+
+    { "type": "header", "content": "Card size & style" },
+    { "type": "range", "id": "card_width", "min": 220, "max": 500, "step": 10, "unit": "px", "label": "Card width", "default": 500 },
+    { "type": "range", "id": "card_height", "min": 250, "max": 520, "step": 10, "unit": "px", "label": "Card height", "default": 350 },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Border radius", "default": 16 },
+    { "type": "range", "id": "card_angle", "min": -10, "max": 10, "step": 1, "unit": "deg", "label": "Angle", "default": 0 },
+    { "type": "range", "id": "card_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacity", "default": 100 },
+
+    { "type": "color", "id": "card_background_color", "label": "Default background (fallback)", "default": "#F2F2F2" },
+    { "type": "range", "id": "hover_lift", "min": 0, "max": 12, "step": 1, "unit": "px", "label": "Hover lift", "default": 4 },
+
+    { "type": "header", "content": "Outline" },
+    { "type": "range", "id": "outline_width", "min": 0, "max": 8, "step": 1, "unit": "px", "label": "Outline width", "default": 2 },
+  
+    
+    { "type": "header", "content": "Text" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "range", "id": "text_size", "min": 12, "max": 40, "step": 2, "unit": "px", "label": "Text size", "default": 22 },
+    { "type": "select", "id": "text_weight", "label": "Text weight", "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    { "type": "range", "id": "text_padding", "min": 10, "max": 60, "step": 2, "unit": "px", "label": "Text side/bottom padding", "default": 24 },
+
+    { "type": "header", "content": "Icon" },
+    { "type": "text", "id": "icon_custom_size", "label": "Icon size (any CSS unit)", "default": "60px" },
+    { "type": "range", "id": "icon_padding", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Icon padding from edges", "default": 20 },
+    { "type": "color", "id": "icon_color", "label": "Fallback icon color", "default": "#111111" },
+
+    { "type": "header", "content": "Card 1" },
+    { "type": "color", "id": "card_1_bg_color", "label": "Background", "default": "#E6D8FF" },
+    { "type": "image_picker", "id": "card_1_icon_image", "label": "Icon (SVG/PNG)" },
+    { "type": "checkbox", "id": "card_1_show_icon", "label": "Show icon", "default": true },
+    { "type": "richtext", "id": "card_1_text", "label": "Title text", "default": "<p>Simple and private</p>" },
+    { "type": "url", "id": "card_1_link", "label": "Link (optional)" },
+
+    { "type": "header", "content": "Card 2" },
+    { "type": "color", "id": "card_2_bg_color", "label": "Background", "default": "#C9EBEB" },
+    { "type": "image_picker", "id": "card_2_icon_image", "label": "Icon (SVG/PNG)" },
+    { "type": "checkbox", "id": "card_2_show_icon", "label": "Show icon", "default": true },
+    { "type": "richtext", "id": "card_2_text", "label": "Title text", "default": "<p>Clinically backed guidance</p>" },
+    { "type": "url", "id": "card_2_link", "label": "Link (optional)" },
+
+    { "type": "header", "content": "Card 3" },
+    { "type": "color", "id": "card_3_bg_color", "label": "Background", "default": "#FFE9D6" },
+    { "type": "image_picker", "id": "card_3_icon_image", "label": "Icon (SVG/PNG)" },
+    { "type": "checkbox", "id": "card_3_show_icon", "label": "Show icon", "default": true },
+    { "type": "richtext", "id": "card_3_text", "label": "Title text", "default": "<p>Fast, discreet delivery</p>" },
+    { "type": "url", "id": "card_3_link", "label": "Link (optional)" },
+
+    { "type": "header", "content": "Card 4" },
+    { "type": "color", "id": "card_4_bg_color", "label": "Background", "default": "#E7F2DA" },
+    { "type": "image_picker", "id": "card_4_icon_image", "label": "Icon (SVG/PNG)" },
+    { "type": "checkbox", "id": "card_4_show_icon", "label": "Show icon", "default": true },
+    { "type": "richtext", "id": "card_4_text", "label": "Title text", "default": "<p>Support that fits you</p>" },
+    { "type": "url", "id": "card_4_link", "label": "Link (optional)" }
+  ],
+  "presets": [{ "name": "Icon Cards Grid" }]
+}
+{% endschema %}
