@@ -1102,36 +1102,10 @@
         "padding-block-end": 48
       }
     },
-    "section_jDphC7": {
-      "type": "section",
+    "icon_cards_grid_jhaxAX": {
+      "type": "icon-cards-grid",
       "blocks": {
-        "text_ikfRRC": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Your journey starts with expert guidance</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "group_rFxBhL": {
+        "group_mR6Rz7": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1171,11 +1145,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_nNRpfC": {
+            "text_zW7MTd": {
               "type": "text",
-              "name": "t:names.text",
+              "name": "t:names.heading",
               "settings": {
-                "text": "<p>At Élan, every treatment starts with a simple, private consultation, your chance to share your goals and health needs, so we can guide you to the right, clinically proven care.</p>",
+                "text": "<h2>Your journey starts with expert guidance</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1196,70 +1170,13 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "spacer_WcV6tB": {
-              "type": "spacer",
-              "name": "t:names.spacer",
-              "settings": {
-                "size": "percent",
-                "percent_size": 100,
-                "pixel_size": 120,
-                "custom_mobile_size": false,
-                "size_mobile": "percent",
-                "percent_size_mobile": 100,
-                "pixel_size_mobile": 120
-              },
-              "blocks": {}
-            },
-            "button_aUYLQJ": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Start your consultation",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "text_nNRpfC",
-            "spacer_WcV6tB",
-            "button_aUYLQJ"
+            "text_zW7MTd"
           ]
         },
-        "text_rNRcwb": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<h5>*Prescribed only when safe and clinically appropriate.</h5>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h5",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "group_7ELKEh": {
+        "group_CCKKFE": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1267,15 +1184,15 @@
             "open_in_new_tab": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "center",
+            "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 0,
-            "width": "custom",
+            "gap": 12,
+            "width": "fill",
             "custom_width": 100,
-            "width_mobile": "custom",
+            "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
             "custom_height": 100,
@@ -1299,92 +1216,183 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "ai_gen_block_44a9a8a_6MezQR": {
-              "type": "ai_gen_block_44a9a8a",
+            "text_irJBDf": {
+              "type": "text",
+              "name": "t:names.text",
               "settings": {
-                "card_1_hover_outline_color": "#bc9afc",
-                "card_2_hover_outline_color": "#77d5d2",
-                "card_3_hover_outline_color": "#8dc0ef",
-                "card_4_hover_outline_color": "#f6c9a7",
-                "grid_gap": 14,
-                "section_padding": 0,
-                "card_width": 310,
-                "card_height": 350,
-                "card_radius": 16,
-                "card_angle": 0,
-                "card_opacity": 100,
-                "card_background_color": "#dacaf8",
-                "hover_lift": 4,
-                "outline_width": 4,
-                "text_color": "#333333",
-                "text_size": 28,
-                "text_weight": "500",
-                "text_padding": 20,
-                "icon_custom_size": "",
-                "icon_padding": 30,
-                "icon_color": "#000000",
-                "card_1_bg_color": "#e6d8ff",
-                "card_1_icon_image": "shopify://shop_images/Group_5.png",
-                "card_1_show_icon": true,
-                "card_1_text": "<p>Simple and<br/>private</p>",
-                "card_1_link": "",
-                "card_2_bg_color": "#c9ebeb",
-                "card_2_icon_image": "shopify://shop_images/clinic.png",
-                "card_2_show_icon": true,
-                "card_2_text": "<p>Clinically backed guidance</p>",
-                "card_2_link": "",
-                "card_3_bg_color": "#d5e6f6",
-                "card_3_icon_image": "shopify://shop_images/safe.png",
-                "card_3_show_icon": true,
-                "card_3_text": "<p>Safe, sustainable progress</p>",
-                "card_3_link": "",
-                "card_4_bg_color": "#f5ece5",
-                "card_4_icon_image": "shopify://shop_images/designed.png",
-                "card_4_show_icon": true,
-                "card_4_text": "<p>Designed aroundyour goals</p>",
-                "card_4_link": ""
+                "text": "<p>At Élan, every treatment starts with a simple, private consultation, your chance to share your goals and health needs, so we can guide you to the right, clinically proven care.</p>",
+                "width": "fit-content",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "spacer_enakmP": {
+              "type": "spacer",
+              "name": "t:names.spacer",
+              "settings": {
+                "size": "percent",
+                "percent_size": 100,
+                "pixel_size": 120,
+                "custom_mobile_size": false,
+                "size_mobile": "percent",
+                "percent_size_mobile": 100,
+                "pixel_size_mobile": 120
+              },
+              "blocks": {}
+            },
+            "button_4FnpyX": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "ai_gen_block_44a9a8a_6MezQR"
+            "text_irJBDf",
+            "spacer_enakmP",
+            "button_4FnpyX"
+          ]
+        },
+        "group_BaHmDp": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "link": "",
+            "open_in_new_tab": false,
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "placeholder": "",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_daMXCG": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h5>*Prescribed only when safe and clinically appropriate.</h5>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_daMXCG"
           ]
         }
       },
       "block_order": [
-        "text_ikfRRC",
-        "group_rFxBhL",
-        "text_rNRcwb",
-        "group_7ELKEh"
+        "group_mR6Rz7",
+        "group_CCKKFE",
+        "group_BaHmDp"
       ],
-      "name": "Your Journey with expert guidance",
+      "name": "Your journey starts with expert guidance",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 36,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 100,
-        "padding-block-end": 0
+        "padding-top": 20,
+        "card_1_hover_outline_color": "#bc9afc",
+        "card_2_hover_outline_color": "#77d5d2",
+        "card_3_hover_outline_color": "#8dc0ef",
+        "card_4_hover_outline_color": "#f6c9a7",
+        "section_width": "page",
+        "heading": "",
+        "heading_size": "h2",
+        "grid_gap": 20,
+        "card_radius": 16,
+        "card_angle": 0,
+        "card_opacity": 100,
+        "hover_lift": 4,
+        "outline_width": 4,
+        "text_color": "#111111",
+        "text_size": 22,
+        "text_weight": "500",
+        "text_padding": 24,
+        "icon_custom_size": "150px",
+        "icon_padding": 20,
+        "card_icon_1": "shopify://shop_images/OBJECT_1.png",
+        "card_bg_1": "#dacaf8",
+        "card_text_1": "<p>Simple and<br/>private</p>",
+        "card_link_1": "",
+        "card_icon_2": "shopify://shop_images/Group_1577709758_1.png",
+        "card_bg_2": "#bfe5e4",
+        "card_text_2": "<p>Clinically backed guidance</p>",
+        "card_link_2": "",
+        "card_icon_3": "shopify://shop_images/safe.png",
+        "card_bg_3": "#d5e6f6",
+        "card_text_3": "<p>Safe, sustainable progress</p>",
+        "card_link_3": "",
+        "card_icon_4": "shopify://shop_images/designed.png",
+        "card_bg_4": "#f5ece5",
+        "card_text_4": "<p>Designed around your goals</p>",
+        "card_link_4": ""
       }
     },
     "process_tabs_whDcgP": {
@@ -2000,7 +2008,7 @@
     "hero_jVaWmY",
     "section_DkwYUC",
     "collection_list_dxbr9i",
-    "section_jDphC7",
+    "icon_cards_grid_jhaxAX",
     "process_tabs_whDcgP",
     "testimonial_YXkVBB",
     "section_efggU7",

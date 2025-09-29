@@ -1,10 +1,8 @@
-
-
 {% liquid
-  assign order = 'logo,menu,localization,search,mobile_search,actions'
+  assign order = 'logo,menu,menu_duplicate,localization,search,mobile_search,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'mobile_search,logo,menu,localization,search,actions'
+    assign order = 'mobile_search,logo,menu,menu_duplicate,localization,search,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -51,6 +49,10 @@
     content_for 'block', type: '_header-menu', id: 'header-menu'
   endcapture
 
+  capture menu_duplicate
+    content_for 'block', type: '_header-menu', id: 'header-menu-duplicate'
+  endcapture
+
   capture mobile_menu
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
   endcapture
@@ -71,23 +73,23 @@
   if section.settings.localization_position == 'left'
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,search,localization,menu,actions'
+        assign order = 'mobile_search,logo,search,localization,menu,menu_duplicate,actions'
       else
-        assign order = 'logo,search,localization,menu,mobile_search,actions'
+        assign order = 'logo,search,localization,menu,menu_duplicate,mobile_search,actions'
       endif
     else
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,localization,menu,search,actions'
+        assign order = 'mobile_search,logo,localization,menu,menu_duplicate,search,actions'
       else
-        assign order = 'logo,localization,menu,search,mobile_search,actions'
+        assign order = 'logo,localization,menu,menu_duplicate,search,mobile_search,actions'
       endif
     endif
   else
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,search,menu,localization,actions'
+        assign order = 'mobile_search,logo,search,menu,menu_duplicate,localization,actions'
       else
-        assign order = 'logo,search,menu,localization,mobile_search,actions'
+        assign order = 'logo,search,menu,menu_duplicate,localization,mobile_search,actions'
       endif
     endif
   endif
@@ -237,6 +239,7 @@
         first: first,
         logo: logo,
         menu: menu,
+        menu_duplicate: menu_duplicate,
         actions: actions,
         localization: localization_markup,
         search: search,
@@ -727,6 +730,31 @@ main > .shopify-section:first-child {
           "value": "bottom",
           "label": "t:options.bottom"
         }
+      ],
+      "default": "top"
+    },
+        {
+      "type": "header",
+      "content": "Duplicate Menu"
+    },
+    {
+      "type": "select",
+      "id": "menu_duplicate_position",
+      "label": "Duplicate menu position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "menu_duplicate_row",
+      "label": "Duplicate menu row",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
       ],
       "default": "top"
     },

@@ -107,7 +107,10 @@
        {% render block %}
       {% endfor %}
 
-    <div class="ai-card-grid section-content">
+    <div class="ai-card-grid section-content"
+      style="padding-top:{{ section.settings.padding-top}}px"
+      
+    >
       <!-- Render the 4 static cards from settings -->
       {% for i in (1..4) %}
         {% assign card_bg_key = 'card_bg_' | append: i %}
@@ -155,6 +158,16 @@
   "name": "Icon Cards Grid",
   "tag": "section",
   "settings": [
+    {
+      "type": "range",
+      "id": "padding-top",
+      "label": "Padding Top",
+      "default":20,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+
+    },
      {
       "type": "color",
       "id": "card_1_hover_outline_color",
