@@ -1,8 +1,12 @@
 {% liquid
+   # Base desktop order
   assign order = 'logo,menu,menu_duplicate,localization,search,mobile_search,actions'
 
+  # If customer accounts are enabled, prepend mobile_menu_duplicate for mobile
   if shop.customer_accounts_enabled
-    assign order = 'mobile_search,logo,menu,menu_duplicate,localization,search,actions'
+    assign order = 'mobile_menu_duplicate,' | append: order
+  else
+    assign order = 'mobile_menu_duplicate,' | append: order
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -52,10 +56,11 @@
   capture menu_duplicate
     content_for 'block', type: '_header-menu', id: 'header-menu-duplicate'
   endcapture
+  
 
-  capture mobile_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
-  endcapture
+  capture mobile_menu_duplicate
+  content_for 'block', type: '_header-menu', id: 'header-menu-mobile-only', variant: 'mobile'
+endcapture
 
   capture navigation_bar
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
@@ -240,6 +245,7 @@
         logo: logo,
         menu: menu,
         menu_duplicate: menu_duplicate,
+         mobile_menu_duplicate: mobile_menu_duplicate,
         actions: actions,
         localization: localization_markup,
         search: search,
@@ -395,8 +401,17 @@
   }
 
 /* removes the gap when using sticky position by pulling up the section */
-main > .shopify-section:first-child {
-  margin-top: -50px; /* Pulls the first content section up by 30px */
+
+.header__row.header__row--top.color-scheme-1.section.section--full-width-margin.section--page-width {
+  z-index:9;
+  position: absolute;
+  width:88.88%;
+  margin:0 auto;
+  right:0;
+  left:0;
+  top:30px;
+  border-radius: 16px
+    
 }
 
 
@@ -661,6 +676,78 @@ main > .shopify-section:first-child {
     url.searchParams.delete('page');
     hydrate('{{ section.id }}', url);
   </script>
+
+  <script>
+(() => {
+  const headerRow =
+    document.querySelector('#header-component .header__row--top') ||
+    document.querySelector('.header__row--top');
+
+  if (!headerRow) { console.warn('Header row not found'); return; }
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .header__row--top.smart-fixed {
+      position: fixed !important;
+      top: 0;
+      left: 0; right: 0;
+      margin: 0 auto;
+      width: 88.88%;
+      max-width: var(--page-width, 1280px);
+      z-index: 9999;
+      border-radius: 16px;
+      transition: transform .4s ease, opacity .25s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .header__row--top.smart-hidden {
+      transform: translateY(-120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .header__row--top.smart-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const headerTop = headerRow.offsetTop;
+  let lastY = window.pageYOffset || 0;
+  let ticking = false;
+
+  function onScroll() {
+    const y = window.pageYOffset || 0;
+    const delta = y - lastY;
+
+    if (y > headerTop) {
+      if (delta > 0) {
+        // scrolling down → hide
+        headerRow.classList.add('smart-fixed', 'smart-hidden');
+        headerRow.classList.remove('smart-visible');
+      } else if (delta < 0) {
+        // scrolling up → show
+        headerRow.classList.add('smart-fixed', 'smart-visible');
+        headerRow.classList.remove('smart-hidden');
+      }
+    } else {
+      // reset at original position
+      headerRow.classList.remove('smart-fixed', 'smart-hidden', 'smart-visible');
+    }
+
+    lastY = y <= 0 ? 0 : y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+
 {% endunless %}
 
 {% schema %}
