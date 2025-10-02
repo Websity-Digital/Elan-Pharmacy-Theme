@@ -1828,7 +1828,8 @@
         "accordion_FEF9WC"
       ],
       "custom_css": [
-        ".icon-plus {font-size: 38px; border: 1px solid; border-radius: 100px; width: 32px; height: 32px; color: #333;}"
+        ".icon-plus {font-size: 38px; border: 1px solid; border-radius: 100px; width: 32px; height: 32px; color: #333;}",
+        ".details__header{font-size: large;}"
       ],
       "name": "t:names.faq_section",
       "settings": {
