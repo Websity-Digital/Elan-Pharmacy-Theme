@@ -951,7 +951,13 @@
             "placement": "below_image",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
-            "collection_card_gap": 20
+            "collection_card_gap": 20,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0
           },
           "blocks": {
             "group_NmaLBi": {
@@ -1066,6 +1072,22 @@
                 "product_description_4ndW3a",
                 "button_rQHQ7b"
               ]
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "portrait",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1876,6 +1898,9 @@
       "block_order": [
         "group_XfLFi4",
         "accordion_FEF9WC"
+      ],
+      "custom_css": [
+        ".icon-plus {font-size: 38px; border: 1px solid; border-radius: 100px; width: 32px; height: 32px; color: #333;}"
       ],
       "name": "t:names.faq_section",
       "settings": {
