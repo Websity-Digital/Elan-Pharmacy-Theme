@@ -272,7 +272,7 @@
                   "name": "t:names.video",
                   "settings": {
                     "source": "uploaded",
-                    "video": "shopify://files/videos/Untitled design.mp4",
+                    "video": "shopify://files/videos/Untitled design (1).webm",
                     "video_url": "",
                     "video_autoplay": true,
                     "video_loop": true,
