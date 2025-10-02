@@ -14,31 +14,34 @@
     "footer": {
       "type": "footer",
       "name": "Footer",
-      "settings": {
-        "shop_heading": "Shop",
-        "shop_menu": "shop",
-        "service_heading": "Customer service",
-        "service_menu": "customer-service",
-        "about_heading": "About us",
-        "about_text": "Moving forward with confidence starts with the right care. Built in the UK and led by registered pharmacists, we make healthcare feel effortless and reliable at every step.",
-        "payment_heading": "Payment",
-        "show_payment_icons": true,
-        "logo": "shopify://shop_images/Group_1577709624_1_1376051e-cea4-4b9a-a93a-7509959c2cc8.png",
-        "logo_text": "Elan",
-        "logo_subtitle": "pharmacy",
-        "social_heading": "Follow us on",
-        "twitter_url": "shopify://collections/hair-loss-treatments",
-        "instagram_url": "shopify://pages/contact",
-        "facebook_url": "shopify://blogs/news",
-        "copyright_text": "Elan pharmacy. All rights reserved 2025",
-        "privacy_url": "",
-        "privacy_text": "Privacy policy",
-        "terms_url": "",
-        "terms_text": "Terms of use"
-      }
+      "settings": {}
+    },
+    "footer_utilities": {
+      "type": "footer-utilities",
+      "blocks": {
+        "block_b88a3462bc56": {
+          "type": "footer-copyright",
+          "settings": {}
+        },
+        "block_90cdc86ec4a1": {
+          "type": "footer-policy-list",
+          "settings": {}
+        },
+        "block_cb4875c3868f": {
+          "type": "social-links",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "block_b88a3462bc56",
+        "block_90cdc86ec4a1",
+        "block_cb4875c3868f"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "footer"
+    "footer",
+    "footer_utilities"
   ]
 }

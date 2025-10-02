@@ -273,13 +273,8 @@
 </div>
 
 {% stylesheet %}
-
-
   .hero-wrapper {
     --hero-height-offset: 0px;
-    border-radius: 16px;
-    overflow: hidden;
-    margin: 20px;
   }
 
   /* Being extra specific in the selector for performance reasons */
@@ -397,10 +392,6 @@
     --blurred-reflection-filter-blur: blur(20px);
     --blurred-reflection-scale: scale(2, 1.25);
     --blurred-reflection-padding-block-end: 60px;
-  }
-
-  .hero[data-blur-shadow='true'] .hero__container {
-    overflow: inherit;
   }
 
   .hero[data-blur-shadow='true'] .hero__container::before {
