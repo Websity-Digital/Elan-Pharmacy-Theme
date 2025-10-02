@@ -1586,9 +1586,9 @@
                 "text_Bj6FNa": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn’t the case, let us know and we’ll do our best to work with you to make it right. </p>",
+                    "text": "<h4>Our goal is for every customer to be totally satisfied with their purchase. If this isn’t the case, let us know and we’ll do our best to work with you to make it right. </h4>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "narrow",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -1829,7 +1829,7 @@
       ],
       "custom_css": [
         ".icon-plus {font-size: 38px; border: 1px solid; border-radius: 100px; width: 32px; height: 32px; color: #333;}",
-        ".details__header{font-size: large;}"
+        ".details__header {font-size: large;}"
       ],
       "name": "t:names.faq_section",
       "settings": {
