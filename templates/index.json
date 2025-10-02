@@ -306,7 +306,10 @@
       "block_order": [
         "group_6VHnjt"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".hero {position: relative; padding: 16px;}",
+        ".hero__container{border-radius: 16px;}"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
