@@ -11,37 +11,125 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "footer": {
-      "type": "footer",
-      "name": "Footer",
-      "settings": {}
-    },
-    "footer_utilities": {
-      "type": "footer-utilities",
+    "custom_footer_i4mUmU": {
+      "type": "custom-footer",
       "blocks": {
-        "block_b88a3462bc56": {
-          "type": "footer-copyright",
-          "settings": {}
+        "shop_link_CcGMxE": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Wegovy",
+            "url": "/products/wegovy"
+          }
         },
-        "block_90cdc86ec4a1": {
-          "type": "footer-policy-list",
-          "settings": {}
+        "shop_link_7GfpM9": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Mounjaro",
+            "url": "/products/mounjaro"
+          }
         },
-        "block_cb4875c3868f": {
-          "type": "social-links",
-          "settings": {}
+        "shop_link_XWNWyQ": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Prescription-only medications",
+            "url": "/collections/prescription-medications"
+          }
+        },
+        "shop_link_nYpDMJ": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Treatment kits",
+            "url": "/collections/treatment-kits"
+          }
+        },
+        "shop_link_kfYJWe": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Maintenance plans",
+            "url": "/pages/maintenance-plans"
+          }
+        },
+        "shop_link_w7Y3DE": {
+          "type": "shop_link",
+          "settings": {
+            "text": "Aftercare plans",
+            "url": "/pages/aftercare-plans"
+          }
+        },
+        "service_link_N47fTT": {
+          "type": "service_link",
+          "settings": {
+            "text": "FAQs",
+            "url": "/pages/faqs"
+          }
+        },
+        "service_link_CE69G8": {
+          "type": "service_link",
+          "settings": {
+            "text": "Shipping",
+            "url": "/pages/shipping"
+          }
+        },
+        "service_link_AeDNwb": {
+          "type": "service_link",
+          "settings": {
+            "text": "Contact",
+            "url": "/pages/contact"
+          }
+        },
+        "service_link_zmPwK8": {
+          "type": "service_link",
+          "settings": {
+            "text": "Blogs",
+            "url": "/blogs/news"
+          }
+        },
+        "service_link_8DfpfT": {
+          "type": "service_link",
+          "settings": {
+            "text": "Return and refunds",
+            "url": "/pages/returns"
+          }
         }
       },
       "block_order": [
-        "block_b88a3462bc56",
-        "block_90cdc86ec4a1",
-        "block_cb4875c3868f"
+        "shop_link_CcGMxE",
+        "shop_link_7GfpM9",
+        "shop_link_XWNWyQ",
+        "shop_link_nYpDMJ",
+        "shop_link_kfYJWe",
+        "shop_link_w7Y3DE",
+        "service_link_N47fTT",
+        "service_link_CE69G8",
+        "service_link_AeDNwb",
+        "service_link_zmPwK8",
+        "service_link_8DfpfT"
       ],
-      "settings": {}
+      "name": "Elan Footer",
+      "settings": {
+        "shop_heading": "Shop",
+        "shop_menu": "",
+        "service_heading": "Customer service",
+        "service_menu": "",
+        "about_heading": "About us",
+        "about_text": "Moving forward with confidence starts with the right care. Built in the UK and led by registered pharmacists, we make healthcare feel effortless and reliable at every step.",
+        "payment_heading": "Payment",
+        "show_payment_icons": true,
+        "logo_text": "Elan",
+        "logo_subtitle": "pharmacy",
+        "social_heading": "Follow us on",
+        "twitter_url": "",
+        "instagram_url": "",
+        "facebook_url": "",
+        "copyright_text": "Elan pharmacy. All rights reserved 2025",
+        "privacy_url": "",
+        "privacy_text": "Privacy policy",
+        "terms_url": "",
+        "terms_text": "Terms of use"
+      }
     }
   },
   "order": [
-    "footer",
-    "footer_utilities"
+    "custom_footer_i4mUmU"
   ]
 }
