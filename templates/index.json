@@ -308,7 +308,7 @@
       ],
       "custom_css": [
         ".hero {position: relative; padding: 16px;}",
-        ".hero__container{border-radius: 16px;}"
+        ".hero__container {border-radius: 16px;}"
       ],
       "name": "t:names.hero",
       "settings": {
@@ -1397,7 +1397,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg.png"
+            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg_3_-1.webp"
           }
         },
         "testimonial_cJznyL": {
@@ -1408,7 +1408,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg_1.png"
+            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg_4.webp"
           }
         },
         "testimonial_TLnQFQ": {
@@ -1419,7 +1419,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg_2.png"
+            "image": "shopify://shop_images/unsplash_KvoHU9Fd3tg_5.webp"
           }
         },
         "testimonial_7dRiPG": {
@@ -1430,7 +1430,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/portrait-smiling-man-standing-forest_2_1.png"
+            "image": "shopify://shop_images/portrait-smiling-man-standing-forest_2_2.webp"
           }
         },
         "testimonial_cyMhxU": {
@@ -1441,7 +1441,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/female-doctor-using-digital-tablet-consult-patient_1.png"
+            "image": "shopify://shop_images/female-doctor-using-digital-tablet-consult-patient_1_1_-2.webp"
           }
         },
         "testimonial_NpW7Vw": {
@@ -1452,7 +1452,7 @@
             "metric": "25",
             "unit": "kg",
             "text": "<p>Lorem ipsum dolor sit amet consectetur. Nec vitae ullamcorper id id lorem tellus luctus id in. Hendrerit eget in velit non vitae elementum elementum.</p>",
-            "image": "shopify://shop_images/portrait-smiling-man-standing-forest_1.png"
+            "image": "shopify://shop_images/portrait-smiling-man-standing-forest_1_1_-1.webp"
           }
         }
       },
