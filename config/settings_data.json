@@ -81,6 +81,45 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "default-width-buttons",
+    "sections": {
+      "quincy": {
+        "type": "quincy",
+        "blocks": {
+          "image_rjKcVV": {
+            "type": "image",
+            "settings": {
+              "name": "Quincy font",
+              "custom_font_weight": "none",
+              "custom_font_url": "https://cdn.shopify.com/s/files/1/0921/4761/4023/files/QuincyCF-Regular.woff?v=1758109864",
+              "apply_h1": true,
+              "apply_h2": true,
+              "apply_h3": true,
+              "apply_h4": true,
+              "apply_h5": true,
+              "apply_h6": true,
+              "apply_span": false,
+              "apply_p": false,
+              "apply_a": false,
+              "apply_input": false,
+              "apply_label": false,
+              "apply_legend": false,
+              "apply_button": false,
+              "apply_summary": false,
+              "apply_select": false,
+              "apply_option": false,
+              "apply_small": false,
+              "apply_custom": ""
+            }
+          }
+        },
+        "block_order": [
+          "image_rjKcVV"
+        ],
+        "settings": {
+          "enable": true
+        }
+      }
+    },
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
