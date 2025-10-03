@@ -38,14 +38,14 @@
 }
 
 .testimonial-image-container {
-  height: 320px; /* Image takes up top half */
+  height: auto; /* Image takes up top half */
   width: 100%;
   overflow: hidden;
 }
 
 .testimonial-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 

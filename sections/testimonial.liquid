@@ -13,7 +13,7 @@
             <!-- Updated structure to separate image and content areas -->
             <div class="testimonial-image-container">
               {% if block.settings.image != blank %}
-                {{ block.settings.image | image_url: width: 400, height: 200, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, class: 'testimonial-image' }}
+                {{ block.settings.image | image_url: width: 400, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, class: 'testimonial-image' }}
               {% else %}
                 <div class="testimonial-image-placeholder"></div>
               {% endif %}
