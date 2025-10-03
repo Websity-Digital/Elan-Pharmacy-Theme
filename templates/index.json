@@ -1815,7 +1815,7 @@
       ],
       "custom_css": [
         ".icon-plus {font-size: 38px; border: 1px solid; border-radius: 100px; width: 32px; height: 32px; color: #333;}",
-        ".details__header {font-size: large;}"
+        ".details__header {font-size: x-large; font-family: h5;}"
       ],
       "name": "t:names.faq_section",
       "settings": {
