@@ -79,8 +79,8 @@
 }
 {% endstylesheet %}
 
-<div class="section section--spacing section--{{ section.settings.section_width }}">
-  <div class="section__inner"
+<div class="section  section section--page-width spacing-style gap-style" style="padding:{{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;">
+  <div class="spacing-style"
        style="
          --grid-gap: {{ section.settings.grid_gap }}px;
          --card-radius: {{ section.settings.card_radius }}px;
@@ -158,15 +158,45 @@
   "name": "Icon Cards Grid",
   "tag": "section",
   "settings": [
-    {
+     {
       "type": "range",
-      "id": "padding-top",
-      "label": "Padding Top",
-      "default":20,
-      "unit": "px",
+      "id": "padding_top",
       "min": 0,
-      "max": 100
-
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 100
+    },
+        {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 30
+    },
+        {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Left padding",
+      "default": 30
+    },
+        {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Right padding",
+      "default": 30
     },
      {
       "type": "color",

@@ -56,11 +56,12 @@
   capture menu_duplicate
     content_for 'block', type: '_header-menu', id: 'header-menu-duplicate'
   endcapture
-  
 
-  capture mobile_menu_duplicate
+
+  capture mobile_menu
   content_for 'block', type: '_header-menu', id: 'header-menu-mobile-only', variant: 'mobile'
 endcapture
+
 
   capture navigation_bar
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
