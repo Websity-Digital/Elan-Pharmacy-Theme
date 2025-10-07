@@ -445,7 +445,7 @@
           "shadow": "#000000",
           "primary_button_background": "#fffaf6",
           "primary_button_text": "#000000",
-          "primary_button_border": "#000000",
+          "primary_button_border": "#00000003",
           "primary_button_hover_background": "#333333",
           "primary_button_hover_text": "#ffffff",
           "primary_button_hover_border": "#000000",
