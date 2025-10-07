@@ -956,7 +956,7 @@
             "placement": "below_image",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
-            "collection_card_gap": 20
+            "collection_card_gap": 8
           },
           "blocks": {
             "group_NmaLBi": {
@@ -1082,6 +1082,9 @@
       "block_order": [
         "group_zK3VyL"
       ],
+      "custom_css": [
+        ".section--page-width {max-width: 95%; align-items: center; justify-content: center; margin: 0 auto;}"
+      ],
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
@@ -1094,15 +1097,15 @@
         "carousel_on_mobile": true,
         "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
+        "mobile_card_size": "44cqw",
         "columns_gap": 20,
         "bento_gap": 8,
         "rows_gap": 7,
         "max_collections": 4,
-        "icons_style": "chevron",
+        "icons_style": "chevron_large",
         "icons_shape": "none",
         "section_width": "page-width",
-        "gap": 21,
+        "gap": 10,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
@@ -1185,8 +1188,8 @@
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 27,
+                "width": "custom",
+                "custom_width": 25,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
               },
@@ -1274,12 +1277,15 @@
         "group_CCKKFE",
         "group_BaHmDp"
       ],
+      "custom_css": [
+        ".section--page-width {max-width: 95%; align-items: center; justify-content: center; margin: 0 auto;}"
+      ],
       "name": "Your journey starts with expert guidance",
       "settings": {
         "padding_top": 100,
         "padding_bottom": 30,
-        "padding_left": 30,
-        "padding_right": 30,
+        "padding_left": 0,
+        "padding_right": 0,
         "card_1_hover_outline_color": "#bc9afc",
         "card_2_hover_outline_color": "#77d5d2",
         "card_3_hover_outline_color": "#8dc0ef",
